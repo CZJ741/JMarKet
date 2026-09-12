@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/publish/publish",
+    "pages/detail/detail",
+    "pages/my/my",
+    "pages/report/report"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarTitleText": "黄师互助",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f4f7f9"
+  },
+  "tabBar": {
+    "color": "#8c8c8c",
+    "selectedColor": "#1890ff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "需求大厅"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布需求"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

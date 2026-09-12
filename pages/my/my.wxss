@@ -1,0 +1,187 @@
+/* pages/my/my.wxss */
+.container {
+  padding-bottom: 40rpx;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff, #f0f7ff);
+  border: 1rpx solid #e6f7ff;
+}
+
+.avatar-box {
+  width: 100rpx;
+  height: 100rpx;
+  background: #e6f7ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  margin-right: 24rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.user-nickname {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #262626;
+}
+
+.user-id {
+  font-size: 24rpx;
+  color: #8c8c8c;
+}
+
+.verify-card {
+  background: #fcffe6;
+  border: 1rpx solid #eaff8f;
+}
+
+.verify-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #5b8c00;
+  margin-bottom: 8rpx;
+}
+
+.verify-tag {
+  font-size: 22rpx;
+  background: #52c41a;
+  color: #ffffff;
+  padding: 2rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.verify-desc {
+  font-size: 24rpx;
+  color: #8c8c8c;
+  line-height: 1.4;
+  margin-bottom: 16rpx;
+}
+
+.verify-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.v-input {
+  background: #ffffff;
+  border: 1rpx solid #d9d9d9;
+  border-radius: 8rpx;
+  height: 72rpx;
+  padding: 0 18rpx;
+  font-size: 26rpx;
+}
+
+.v-btn {
+  margin-top: 10rpx;
+  padding: 12rpx 0;
+  font-size: 28rpx;
+}
+
+.verified-done {
+  font-size: 26rpx;
+  color: #389e0d;
+  font-weight: 500;
+  padding: 10rpx 0;
+}
+
+.tab-bar {
+  display: flex;
+  background: #ffffff;
+  margin: 20rpx 24rpx 0 24rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  color: #595959;
+  background: #f5f5f5;
+  transition: all 0.2s;
+}
+
+.tab-item.active {
+  background: #ffffff;
+  color: #1890ff;
+  font-weight: 600;
+  border-bottom: 4rpx solid #1890ff;
+}
+
+.my-order-item {
+  margin-top: 14rpx;
+  margin-bottom: 14rpx;
+}
+
+.item-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.tag-text {
+  font-size: 22rpx;
+  color: #1890ff;
+  background: #e6f7ff;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.status-badge {
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.st-pending { background: #f6ffed; color: #52c41a; }
+.st-accepted { background: #e6f7ff; color: #1890ff; }
+.st-in_progress { background: #fffbe6; color: #faad14; }
+.st-completed { background: #f5f5f5; color: #8c8c8c; }
+.st-cancelled { background: #fff1f0; color: #f5222d; }
+
+.item-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 12rpx;
+}
+
+.item-ft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #8c8c8c;
+}
+
+.price-val {
+  color: #ff4d4f;
+  font-weight: 600;
+  font-size: 28rpx;
+}
+
+.empty-hint {
+  text-align: center;
+  color: #bfbfbf;
+  font-size: 26rpx;
+  padding: 60rpx 0;
+}

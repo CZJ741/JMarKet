@@ -1,0 +1,133 @@
+<!-- pages/detail/detail.wxml -->
+<view class="container" wx:if="{{order}}">
+  <!-- 状态卡片 -->
+  <view class="status-banner">
+    <view class="status-title">{{statusNames[order.status]}}</view>
+    <view class="status-desc">
+      <block wx:if="{{order.status === 'pending'}}">需求已发布，等待同学接单响应中...</block>
+      <block wx:elif="{{order.status === 'accepted'}}">已有人接单，请双方及时通过联系方式沟通</block>
+      <block wx:elif="{{order.status === 'in_progress'}}">互助任务进行中</block>
+      <block wx:elif="{{order.status === 'completed'}}">互助已完成，诚信校园有你一份力量</block>
+      <block wx:elif="{{order.status === 'cancelled'}}">需求已取消</block>
+    </view>
+  </view>
+
+  <!-- 需求详情内容 -->
+  <view class="card">
+    <view class="detail-header">
+      <view class="cat-badge">{{categoryNames[order.category]}}</view>
+      <view class="price-text">
+        <text wx:if="{{order.price > 0}}">¥{{order.price}}</text>
+        <text wx:else>互换 / 免费</text>
+      </view>
+    </view>
+
+    <view class="order-title">{{order.title}}</view>
+    <view class="order-desc">{{order.description}}</view>
+
+    <view class="info-row">
+      <text class="row-label">📍 地点/楼栋：</text>
+      <text class="row-val">{{order.location}}</text>
+    </view>
+    <view class="info-row">
+      <text class="row-label">🕒 发布时间：</text>
+      <text class="row-val">{{order.created_at}}</text>
+    </view>
+  </view>
+
+  <!-- 发布者与接单者信息/联系方式 -->
+  <view class="card">
+    <view class="section-title">对接人与联系方式</view>
+
+    <!-- 发布方 -->
+    <view class="user-block">
+      <view class="user-header">
+        <text class="user-role">发布方：</text>
+        <text class="user-name">{{order.publisher_nickname}}</text>
+        <text wx:if="{{order.publisher_is_verified}}" class="badge-verified">已认证</text>
+        <text wx:else class="badge-unverified">未认证</text>
+      </view>
+      <view class="contact-box" wx:if="{{isRelated || order.status !== 'pending'}}">
+        <text class="contact-num">联系方式：{{order.contact_info}}</text>
+        <button class="btn-copy" bindtap="copyContact" data-val="{{order.contact_info}}">复制</button>
+      </view>
+      <view class="contact-box" wx:else>
+        <text class="contact-hint">接单后即可查看发布方微信/联系电话</text>
+      </view>
+    </view>
+
+    <!-- 接单方 -->
+    <view class="user-block" wx:if="{{order.acceptor_id}}">
+      <view class="user-header">
+        <text class="user-role">接单方：</text>
+        <text class="user-name">{{order.acceptor_nickname || '同学'}}</text>
+        <text wx:if="{{order.acceptor_is_verified}}" class="badge-verified">已认证</text>
+        <text wx:else class="badge-unverified">未认证</text>
+      </view>
+      <view class="contact-box" wx:if="{{order.acceptor_contact}}">
+        <text class="contact-num">接单人联系：{{order.acceptor_contact}}</text>
+        <button class="btn-copy" bindtap="copyContact" data-val="{{order.acceptor_contact}}">复制</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 群推单文案一键复制 -->
+  <view class="card share-card" wx:if="{{order.share_text}}">
+    <view class="share-hd">
+      <text class="share-title">📢 黄师微信互助群推单文案</text>
+      <button class="btn-copy-small" bindtap="copyShareText">复制文案</button>
+    </view>
+    <view class="share-content">{{order.share_text}}</view>
+  </view>
+
+  <!-- 底部操作按钮栏 -->
+  <view class="bottom-actions">
+    <!-- 1. 待接单：非发布者可接单 -->
+    <button
+      wx:if="{{order.status === 'pending' && !isPublisher}}"
+      class="btn-primary"
+      bindtap="onAccept"
+    >
+      立即接单
+    </button>
+
+    <!-- 2. 待接单：发布者可取消 -->
+    <button
+      wx:if="{{order.status === 'pending' && isPublisher}}"
+      class="btn-danger"
+      bindtap="onCancel"
+    >
+      取消需求
+    </button>
+
+    <!-- 3. 已接单状态：置为进行中 -->
+    <button
+      wx:if="{{order.status === 'accepted' && isRelated}}"
+      class="btn-secondary"
+      bindtap="onProgress"
+    >
+      更新为进行中
+    </button>
+
+    <!-- 4. 进行中/已接单状态：确认完成（完成后不可修改） -->
+    <button
+      wx:if="{{(order.status === 'accepted' || order.status === 'in_progress') && isRelated}}"
+      class="btn-primary"
+      bindtap="onComplete"
+    >
+      确认已完成互助
+    </button>
+
+    <!-- 举报入口 -->
+    <view class="report-entry" bindtap="goReport">
+      <text class="report-icon">🚩</text>
+      <text>对该订单有异议或遇诈骗？点击举报</text>
+    </view>
+  </view>
+
+  <view class="disclaimer-bar">
+    <view class="disclaimer-text">
+      免责声明：平台仅提供信息撮合服务，不参与具体交易。
+    </view>
+  </view>
+</view>

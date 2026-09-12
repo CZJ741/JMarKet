@@ -1,0 +1,95 @@
+/** app.wxss - 清新校园风设计 **/
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #333333;
+  box-sizing: border-box;
+}
+
+/* 主题颜色变量定义：校园蓝 #1890ff 与 清新绿 #52c41a */
+.theme-blue {
+  color: #1890ff;
+}
+
+.theme-green {
+  color: #52c41a;
+}
+
+/* 通用卡片布局 */
+.card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin: 20rpx 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+
+/* 底部常驻免责声明条 */
+.disclaimer-bar {
+  padding: 30rpx 24rpx 40rpx 24rpx;
+  text-align: center;
+}
+
+.disclaimer-text {
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 1.6;
+}
+
+/* 按钮通用风格 */
+.btn-primary {
+  background: linear-gradient(135deg, #1890ff, #096dd9);
+  color: #ffffff;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18rpx 0;
+  border: none;
+}
+
+.btn-secondary {
+  background: #e6f7ff;
+  color: #1890ff;
+  border: 1rpx solid #91d5ff;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  padding: 16rpx 0;
+  text-align: center;
+}
+
+.btn-danger {
+  background: #fff1f0;
+  color: #f5222d;
+  border: 1rpx solid #ffa39e;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  padding: 16rpx 0;
+  text-align: center;
+}
+
+/* 认证徽章 */
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  font-size: 20rpx;
+  color: #52c41a;
+  background: #f6ffed;
+  border: 1rpx solid #b7eb8f;
+  padding: 2rpx 10rpx;
+  border-radius: 6rpx;
+  margin-left: 8rpx;
+}
+
+.badge-unverified {
+  display: inline-flex;
+  align-items: center;
+  font-size: 20rpx;
+  color: #8c8c8c;
+  background: #f5f5f5;
+  padding: 2rpx 10rpx;
+  border-radius: 6rpx;
+  margin-left: 8rpx;
+}

@@ -1,0 +1,107 @@
+<!-- pages/publish/publish.wxml -->
+<view class="container">
+  <!-- 顶部风险警示说明 -->
+  <view class="safe-notice">
+    <text class="notice-icon">⚠️</text>
+    <text class="notice-text">严禁发布“代课、刷网课、代写作业、代考”等违反校规校纪内容，系统已开启敏感词检测！</text>
+  </view>
+
+  <form bindsubmit="onSubmit">
+    <!-- 选择板块 -->
+    <view class="form-card card">
+      <view class="form-title">互助板块 <text class="required">*</text></view>
+      <view class="cat-grid">
+        <view
+          wx:for="{{categories}}"
+          wx:key="key"
+          class="cat-chip {{category === item.key ? 'selected' : ''}}"
+          bindtap="onSelectCat"
+          data-key="{{item.key}}"
+        >
+          <text class="chip-icon">{{item.icon}}</text>
+          <text class="chip-label">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 需求信息填写 -->
+    <view class="form-card card">
+      <view class="form-item">
+        <view class="label">需求标题 <text class="required">*</text></view>
+        <input
+          class="input-box"
+          placeholder="例如：南区求代取顺丰大件快递 / 考研英语辅导"
+          value="{{title}}"
+          bindinput="onInputTitle"
+          maxlength="50"
+        />
+      </view>
+
+      <view class="form-item">
+        <view class="label">详细描述 <text class="required">*</text></view>
+        <textarea
+          class="textarea-box"
+          placeholder="请详细说明要求、时间、重量或物品成色等"
+          value="{{description}}"
+          bindinput="onInputDesc"
+          maxlength="500"
+        ></textarea>
+      </view>
+
+      <view class="form-item">
+        <view class="label">感谢报酬 / 价格 (元)</view>
+        <input
+          type="digit"
+          class="input-box"
+          placeholder="0 表示免费互换或情谊互助"
+          value="{{price}}"
+          bindinput="onInputPrice"
+        />
+      </view>
+
+      <view class="form-item">
+        <view class="label">地点 / 宿舍楼栋 <text class="required">*</text></view>
+        <input
+          class="input-box"
+          placeholder="例如：北区12栋楼下 / 中区二食堂"
+          value="{{location}}"
+          bindinput="onInputLocation"
+        />
+      </view>
+
+      <view class="form-item">
+        <view class="label">你的联系方式 (接单后对方可见) <text class="required">*</text></view>
+        <input
+          class="input-box"
+          placeholder="微信号或手机号"
+          value="{{contact_info}}"
+          bindinput="onInputContact"
+        />
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="action-box">
+      <button class="btn-primary" form-type="submit">立即发布需求</button>
+    </view>
+  </form>
+
+  <!-- 发布后推单弹窗 -->
+  <view wx:if="{{showShareModal}}" class="modal-mask">
+    <view class="modal-card">
+      <view class="modal-title">🎉 发布成功</view>
+      <view class="modal-tips">已生成微信群标准推单文案，一键复制后可发送到【黄师互助群】快速呼叫同学接单：</view>
+      <view class="share-box">{{shareText}}</view>
+      <view class="modal-actions">
+        <button class="btn-secondary" bindtap="copyShareText">复制群推单文案</button>
+        <button class="btn-primary" bindtap="closeShareModal">查看详情</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="disclaimer-bar">
+    <view class="disclaimer-text">
+      平台不参与支付与费用抽成，双方线下直接结算。请注意人身与财产安全。
+    </view>
+  </view>
+</view>

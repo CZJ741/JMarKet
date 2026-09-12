@@ -1,0 +1,110 @@
+<!-- pages/my/my.wxml -->
+<view class="container">
+  <!-- 用户信息头部卡片 -->
+  <view class="user-card card">
+    <view class="avatar-box">🎓</view>
+    <view class="user-info">
+      <view class="name-row">
+        <text class="user-nickname">{{userInfo.nickname || '黄师同学'}}</text>
+        <text wx:if="{{userInfo.is_verified}}" class="badge-verified">已认证</text>
+        <text wx:else class="badge-unverified">未认证</text>
+      </view>
+      <view class="user-id">黄师互助通行ID: #{{userInfo.id || '---'}}</view>
+    </view>
+  </view>
+
+  <!-- 校园认证/学号选填入口（增加信任度，不强实名） -->
+  <view class="verify-card card">
+    <view class="verify-hd">
+      <view class="verify-title">
+        <text>🛡️ 校园信任认证</text>
+        <text class="verify-tag" wx:if="{{userInfo.is_verified}}">已点亮校园徽章</text>
+      </view>
+      <view class="verify-desc">可选填学号姓名，填写后将获得校园认证绿标，提升接单与发单信任度（不强校验）。</view>
+    </view>
+
+    <view wx:if="{{!userInfo.is_verified}}">
+      <view class="verify-form">
+        <input class="v-input" placeholder="输入学号 (如 2023xxxx)" value="{{studentId}}" bindinput="onInputStudentId" />
+        <input class="v-input" placeholder="输入真实姓名 (如 李明)" value="{{realName}}" bindinput="onInputRealName" />
+        <input class="v-input" placeholder="输入所属学院 (选填)" value="{{college}}" bindinput="onInputCollege" />
+        <button class="btn-primary v-btn" bindtap="submitVerify">点亮认证标识</button>
+      </view>
+    </view>
+    <view wx:else class="verified-done">
+      <text>已认证身份：{{userInfo.real_name}} (学号: {{userInfo.student_id}}) {{userInfo.college || ''}}</text>
+    </view>
+  </view>
+
+  <!-- 订单管理 Tabs -->
+  <view class="tab-bar">
+    <view
+      class="tab-item {{currentTab === 'published' ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-tab="published"
+    >
+      我发布的需求 ({{publishedList.length}})
+    </view>
+    <view
+      class="tab-item {{currentTab === 'accepted' ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-tab="accepted"
+    >
+      我接单的需求 ({{acceptedList.length}})
+    </view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view class="order-list">
+    <!-- 发布列表 -->
+    <block wx:if="{{currentTab === 'published'}}">
+      <view wx:if="{{publishedList.length === 0}}" class="empty-hint">暂无发布记录</view>
+      <view
+        wx:for="{{publishedList}}"
+        wx:key="id"
+        class="card my-order-item"
+        bindtap="goDetail"
+        data-id="{{item.id}}"
+      >
+        <view class="item-hd">
+          <text class="tag-text">{{categoryMap[item.category]}}</text>
+          <text class="status-badge st-{{item.status}}">{{statusMap[item.status]}}</text>
+        </view>
+        <view class="item-title">{{item.title}}</view>
+        <view class="item-ft">
+          <text class="price-val">¥{{item.price}}</text>
+          <text class="time-val">{{item.location}}</text>
+        </view>
+      </view>
+    </block>
+
+    <!-- 接单列表 -->
+    <block wx:if="{{currentTab === 'accepted'}}">
+      <view wx:if="{{acceptedList.length === 0}}" class="empty-hint">暂无接单记录</view>
+      <view
+        wx:for="{{acceptedList}}"
+        wx:key="id"
+        class="card my-order-item"
+        bindtap="goDetail"
+        data-id="{{item.id}}"
+      >
+        <view class="item-hd">
+          <text class="tag-text">{{categoryMap[item.category]}}</text>
+          <text class="status-badge st-{{item.status}}">{{statusMap[item.status]}}</text>
+        </view>
+        <view class="item-title">{{item.title}}</view>
+        <view class="item-ft">
+          <text class="price-val">¥{{item.price}}</text>
+          <text class="time-val">发布人: {{item.publisher_nickname}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 底部安全与合规免责声明 -->
+  <view class="disclaimer-bar">
+    <view class="disclaimer-text">
+      黄师互助倡导友爱互助、阳光校园。严禁利用本平台进行任何违法、违规、违纪活动。
+    </view>
+  </view>
+</view>

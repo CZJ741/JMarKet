@@ -1,0 +1,81 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 顶部校园公告与提示 -->
+  <view class="banner">
+    <view class="banner-title">🌱 黄师校园自发互助平台</view>
+    <view class="banner-sub">拒绝中间商抽成 · 自由互助 · 诚信对接</view>
+  </view>
+
+  <!-- 六大核心板块分类 Tab（横向滚动） -->
+  <scroll-view class="category-bar" scroll-x="true" enable-flex="true">
+    <view
+      class="cat-item {{selectedCategory === '' ? 'active' : ''}}"
+      bindtap="onSelectCategory"
+      data-cat=""
+    >
+      全部
+    </view>
+    <view
+      wx:for="{{categories}}"
+      wx:key="key"
+      class="cat-item {{selectedCategory === item.key ? 'active' : ''}}"
+      bindtap="onSelectCategory"
+      data-cat="{{item.key}}"
+    >
+      {{item.icon}} {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 需求列表卡片 -->
+  <view class="order-list">
+    <view wx:if="{{orders.length === 0}}" class="empty-state">
+      <view class="empty-icon">📦</view>
+      <view class="empty-text">当前分类暂无待接单需求，快去发布一个吧！</view>
+    </view>
+
+    <view
+      wx:for="{{orders}}"
+      wx:key="id"
+      class="order-card card"
+      bindtap="goDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="order-header">
+        <view class="category-tag tag-{{item.category}}">
+          {{categoryMap[item.category] || '校园需求'}}
+        </view>
+        <view class="price-box">
+          <text class="price-symbol" wx:if="{{item.price > 0}}">¥</text>
+          <text class="price-num">{{item.price > 0 ? item.price : '互换/免费'}}</text>
+        </view>
+      </view>
+
+      <view class="order-title">{{item.title}}</view>
+
+      <view class="order-meta">
+        <view class="meta-item">
+          <text class="meta-icon">📍</text>
+          <text class="meta-val">{{item.location}}</text>
+        </view>
+        <view class="meta-item">
+          <text class="meta-icon">👤</text>
+          <text class="meta-val">{{item.publisher_nickname}}</text>
+          <text wx:if="{{item.publisher_is_verified}}" class="badge-verified">已认证</text>
+          <text wx:else class="badge-unverified">未认证</text>
+        </view>
+      </view>
+
+      <view class="order-footer">
+        <view class="order-status status-{{item.status}}">待接单</view>
+        <button class="btn-grab" catchtap="quickAccept" data-id="{{item.id}}">立即接单</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部常驻免责声明 -->
+  <view class="disclaimer-bar">
+    <view class="disclaimer-text">
+      免责声明：本小程序仅提供学生信息对接，不参与交易与支付；严禁代课、刷网课、代写作业等违纪违规行为。
+    </view>
+  </view>
+</view>

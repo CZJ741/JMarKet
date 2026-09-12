@@ -1,0 +1,186 @@
+/* pages/detail/detail.wxss */
+.container {
+  padding-bottom: 60rpx;
+}
+
+.status-banner {
+  background: linear-gradient(135deg, #1890ff, #096dd9);
+  color: #ffffff;
+  padding: 30rpx 28rpx;
+}
+
+.status-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.status-desc {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.cat-badge {
+  background: #e6f7ff;
+  color: #1890ff;
+  font-size: 22rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 8rpx;
+  font-weight: 500;
+}
+
+.price-text {
+  color: #ff4d4f;
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.order-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f1f1f;
+  margin-bottom: 16rpx;
+}
+
+.order-desc {
+  font-size: 28rpx;
+  color: #434343;
+  line-height: 1.6;
+  background: #fafafa;
+  padding: 16rpx 20rpx;
+  border-radius: 12rpx;
+  margin-bottom: 24rpx;
+}
+
+.info-row {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 12rpx;
+}
+
+.row-label {
+  color: #8c8c8c;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 20rpx;
+}
+
+.user-block {
+  padding: 16rpx 0;
+  border-bottom: 1rpx dashed #f0f0f0;
+}
+
+.user-block:last-child {
+  border-bottom: none;
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.user-role {
+  font-size: 26rpx;
+  color: #8c8c8c;
+}
+
+.user-name {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #262626;
+}
+
+.contact-box {
+  background: #f0f5ff;
+  padding: 12rpx 18rpx;
+  border-radius: 8rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-num {
+  font-size: 26rpx;
+  color: #1d39c4;
+  font-weight: 500;
+}
+
+.contact-hint {
+  font-size: 24rpx;
+  color: #8c8c8c;
+}
+
+.btn-copy {
+  background: #1890ff;
+  color: #ffffff;
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.share-card {
+  background: #f6ffed;
+  border: 1rpx solid #b7eb8f;
+}
+
+.share-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.share-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #389e0d;
+}
+
+.btn-copy-small {
+  background: #52c41a;
+  color: #ffffff;
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.share-content {
+  font-size: 22rpx;
+  color: #555555;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.bottom-actions {
+  margin: 30rpx 24rpx 10rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.report-entry {
+  text-align: center;
+  font-size: 24rpx;
+  color: #ff4d4f;
+  padding: 16rpx 0;
+}
+
+.report-icon {
+  margin-right: 6rpx;
+}

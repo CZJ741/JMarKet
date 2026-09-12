@@ -1,0 +1,13 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "JMarKet",
+  "description": "黄师互助平台 - 校园C2C即时需求对接",
+  "appid": "touristappid",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true
+  },
+  "compileType": "miniprogram"
+}
