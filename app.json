@@ -20,15 +20,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "需求大厅"
+        "text": "需求大厅",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home-active.png"
       },
       {
         "pagePath": "pages/publish/publish",
-        "text": "发布需求"
+        "text": "发布需求",
+        "iconPath": "assets/icons/publish.png",
+        "selectedIconPath": "assets/icons/publish-active.png"
       },
       {
         "pagePath": "pages/my/my",
-        "text": "个人中心"
+        "text": "个人中心",
+        "iconPath": "assets/icons/my.png",
+        "selectedIconPath": "assets/icons/my-active.png"
       }
     ]
   },
